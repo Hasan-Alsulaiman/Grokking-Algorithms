@@ -30,7 +30,7 @@ public class Graph {
     @Override
     public String toString() {
         return "Graph{" +
-                "graph=" + graph +
+                graph +
                 '}';
     }
 
