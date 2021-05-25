@@ -29,9 +29,8 @@ public class Graph {
 
     @Override
     public String toString() {
-        return "Graph{" +
-                graph +
-                '}';
+        return "Graph" +
+                graph;
     }
 
     public static void main(String[] args) {
