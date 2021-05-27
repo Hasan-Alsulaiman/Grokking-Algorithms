@@ -19,7 +19,7 @@ public class BreadthSearch {
     }
 
     public boolean search(String element) {
-        System.out.println(q.peek() + " " + element);
+
         String gElement = q.poll();
         if (element.equals(gElement))
             return true;

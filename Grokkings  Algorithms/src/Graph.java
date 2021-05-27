@@ -30,7 +30,7 @@ public class Graph {
     }
 
     public List<String> get(String key){
-
+// dont return null, instead return empty if no key exists
         return (this.graph.containsKey(key))? this.graph.get(key): new ArrayList<>();
     }
 
@@ -64,7 +64,7 @@ public class Graph {
         System.out.println(g);
 
         BreadthSearch bs = new BreadthSearch(g, "cab");
-        System.out.println(bs.search("cat"));
+        System.out.println(bs.search("bar"));
 
 
 
