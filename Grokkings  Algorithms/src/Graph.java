@@ -27,10 +27,29 @@ public class Graph {
 
     }
 
+    public ArrayList<String> get(String key){
+        return this.graph.get(key);
+    }
+
     @Override
     public String toString() {
         return "Graph" +
                 graph;
+    }
+
+    public static String subString( String input, int start, int end){
+//takes an input string, start position and end position and returns substring of the input
+        StringBuilder result = new StringBuilder();
+        if(start > end)
+            for(int i=start; i >= end; i--){
+                result.append(input.charAt(i));
+            }
+        if(start < end)
+            for(int i=start; i <= end; i++){
+                result.append(input.charAt(i));
+            }
+
+        return result.toString();
     }
 
     public static void main(String[] args) {
@@ -40,6 +59,7 @@ public class Graph {
         g.add("car", "Cat");
         g.add("CAR", "bar");
         System.out.println(g);
+
 
     }
 }
