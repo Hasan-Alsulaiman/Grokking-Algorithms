@@ -5,9 +5,10 @@ import java.util.Queue;
 public class BreadthSearch {
     Graph graph;
     Queue<String> q;
-    BreadthSearch(Graph graph){
+    BreadthSearch(Graph graph, String startPoint){
         this.graph = graph;
         this.q = new LinkedList<>();
+        addToQ(graph.get(startPoint));
     }
 
     private void addToQ(ArrayList<String> arrayList){
@@ -16,8 +17,16 @@ public class BreadthSearch {
         }
     }
 
-    public void search(String startPoint, String element){
-        addToQ(graph.get(startPoint));
+    public boolean search(String element) {
+        if (q.poll() == element)
+            return true;
+
+        if (q.poll().equals(null))
+            return false;
+
+        addToQ(graph.get(q.poll()));
+        return search(element);
 
     }
+
 }
