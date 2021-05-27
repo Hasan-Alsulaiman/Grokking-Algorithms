@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Graph {
@@ -27,8 +29,9 @@ public class Graph {
 
     }
 
-    public ArrayList<String> get(String key){
-        return this.graph.get(key);
+    public List<String> get(String key){
+
+        return (this.graph.containsKey(key))? this.graph.get(key): new ArrayList<>();
     }
 
     @Override
@@ -59,6 +62,10 @@ public class Graph {
         g.add("car", "Cat");
         g.add("CAR", "bar");
         System.out.println(g);
+
+        BreadthSearch bs = new BreadthSearch(g, "cab");
+        System.out.println(bs.search("cat"));
+
 
 
     }

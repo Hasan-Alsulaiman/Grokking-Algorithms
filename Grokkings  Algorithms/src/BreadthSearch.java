@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BreadthSearch {
@@ -11,20 +12,23 @@ public class BreadthSearch {
         addToQ(graph.get(startPoint));
     }
 
-    private void addToQ(ArrayList<String> arrayList){
-        for(String str: arrayList){
-            this.q.add(str);
-        }
+    private void addToQ(List<String> arrayList){
+
+        q.addAll(arrayList);
+
     }
 
     public boolean search(String element) {
-        if (q.poll() == element)
+        System.out.println(q.peek() + " " + element);
+        String gElement = q.poll();
+        if (element.equals(gElement))
             return true;
 
-        if (q.poll().equals(null))
+        addToQ(graph.get(gElement));
+
+        if (q.isEmpty())
             return false;
 
-        addToQ(graph.get(q.poll()));
         return search(element);
 
     }
