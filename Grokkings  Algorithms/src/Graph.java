@@ -64,7 +64,7 @@ public class Graph {
         System.out.println(g);
 
         BreadthSearch bs = new BreadthSearch(g, "cab");
-        bs.pathFinder("bar");
+        System.out.println(bs.pathFinder("bar"));
 
 
 
