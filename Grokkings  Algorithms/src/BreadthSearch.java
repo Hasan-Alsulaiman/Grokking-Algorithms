@@ -18,18 +18,21 @@ public class BreadthSearch {
 
     }
 
-    public boolean search(String element) {
+    public List<String> search(String element, List<String> path) {
 
         String gElement = q.poll();
-        if (element.equals(gElement))
-            return true;
+        if (element.equals(gElement)){
+            path.add(gElement);
+            return path;
+        }
+
 
         addToQ(graph.get(gElement));
 
         if (q.isEmpty())
-            return false;
+            return new LinkedList<>();
 
-        return search(element);
+        return search(element, path);
 
     }
 

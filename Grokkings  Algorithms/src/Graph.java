@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class Graph {
@@ -64,7 +61,7 @@ public class Graph {
         System.out.println(g);
 
         BreadthSearch bs = new BreadthSearch(g, "cab");
-        System.out.println(bs.search("bar"));
+        System.out.println(bs.search("bar", new LinkedList<>()));
 
 
 
