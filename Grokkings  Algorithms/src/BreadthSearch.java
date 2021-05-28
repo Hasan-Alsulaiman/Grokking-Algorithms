@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BreadthSearch {
     Graph graph;
@@ -31,6 +28,20 @@ public class BreadthSearch {
 
         return search(element);
 
+    }
+
+    public void pathFinder(String element){
+        Set<String> visited = new HashSet<>();
+        while(!q.isEmpty()){
+            String gElement = q.poll();
+            if(visited.contains(gElement))
+                continue;
+            visited.add(gElement);
+            if(element.equals(gElement))
+                System.out.println("found it");
+            if(!element.equals(gElement))
+                addToQ(graph.get(gElement));
+        }
     }
 
 }
