@@ -13,10 +13,10 @@ public class BreadthSearch {
 
     private void addToQ(Stack<String> gElement ){
         List<String> arrayList = graph.get(gElement.peek());
-        for(String n: arrayList){
-            Stack<String> s =(Stack<String>) gElement.clone();
-            s.add(n);
-            q.add(s);
+        for(String neighbours: arrayList){
+            Stack<String> path =(Stack<String>) gElement.clone();
+            path.add(neighbours);
+            q.add(path);
 
         }
 
