@@ -24,16 +24,17 @@ public class BreadthSearch {
 
 
     public String pathFinder(String element){
+//        searches for element in a graph, returns path to element if found
         Set<String> visited = new HashSet<>();
         while(!q.isEmpty()){
-            Stack<String> gElement = q.poll();
-            if(visited.contains(gElement.peek()))
+            Stack<String> path = q.poll();
+            if(visited.contains(path.peek()))
                 continue;
-            visited.add(gElement.peek());
-            if(element.equals(gElement.peek()))
-                return "found it! path: " + gElement;
-            if(!element.equals(gElement.peek()))
-                addToQ(gElement);
+            visited.add(path.peek());
+            if(element.equals(path.peek()))
+                return "found it 🐇 path: " + path;
+            if(!element.equals(path.peek()))
+                addToQ(path);
         }
         return "not found!";
     }

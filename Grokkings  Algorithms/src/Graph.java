@@ -61,10 +61,11 @@ public class Graph {
         g.add("cab", "cat");
         g.add("car", "Cat");
         g.add("CAR", "bar");
+        g.add("bar", "cap");
         System.out.println(g);
 
         BreadthSearch bs = new BreadthSearch(g, "cab");
-        System.out.println(bs.pathFinder("bar"));
+        System.out.println(bs.pathFinder("cap"));
 
 
 
