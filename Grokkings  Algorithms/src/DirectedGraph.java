@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class DirectedGraph {
+
     public HashMap<String, Integer> graph;
     public HashMap<String, String> parent;
     DirectedGraph() {
@@ -16,7 +17,7 @@ public class DirectedGraph {
     }
 
     private String createKey(String first, String second){
-        return first + second;
+        return first + "-" + second;
     }
 
     private String cleanStr(String input){
