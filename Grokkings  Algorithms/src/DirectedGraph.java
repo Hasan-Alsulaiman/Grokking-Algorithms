@@ -1,18 +1,28 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class DirectedGraph {
-    HashMap<String, List<Map<String, Integer>>> graph;
+    HashMap<String, LinkedList<Map<String, Integer>>> graph;
 
     DirectedGraph() {
         graph = new HashMap<>();
     }
 
     public void add(String first, String second, Integer cost) {
+        first = cleanStr(first);
+        second = cleanStr(second);
+        if(!graph.containsKey(first)){
+            HashMap<String, Integer> map = new HashMap<>();
+            map.put(second, cost);
+            LinkedList<Map<String, Integer>> list = new LinkedList<>();
+            list.add(map);
+            graph.put(first, list);
+        }else{
+            LinkedList<Map<String, Integer>> existingList = graph.get(first);
+            HashMap<String, Integer> newMap = new HashMap<>();
+            newMap.put(second, cost);
+            existingList.add(newMap);
+        }
 
-        graph.put(cleanStr(first), Map.of(cleanStr(second), cost));
     }
 
     private String cleanStr(String input){
