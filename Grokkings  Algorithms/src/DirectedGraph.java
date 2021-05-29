@@ -10,17 +10,16 @@ public class DirectedGraph {
     public void add(String first, String second, Integer cost) {
         first = cleanStr(first);
         second = cleanStr(second);
+        HashMap<String, Integer> map = new HashMap<>();
+        LinkedList<Map<String, Integer>> list = new LinkedList<>();
         if(!graph.containsKey(first)){
-            HashMap<String, Integer> map = new HashMap<>();
             map.put(second, cost);
-            LinkedList<Map<String, Integer>> list = new LinkedList<>();
             list.add(map);
             graph.put(first, list);
         }else{
-            LinkedList<Map<String, Integer>> existingList = graph.get(first);
-            HashMap<String, Integer> newMap = new HashMap<>();
-            newMap.put(second, cost);
-            existingList.add(newMap);
+            list = graph.get(first);
+            map.put(second, cost);
+            list.add(map);
         }
 
     }
