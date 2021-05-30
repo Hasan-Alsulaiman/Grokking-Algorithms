@@ -38,6 +38,7 @@ public class DirectedGraph {
         DirectedGraph g = new DirectedGraph();
         g.add("start", "a", 6);
         g.add("start", "b", 2);
+        g.add("b", "a", 1);
         System.out.println(g);
     }
 }
