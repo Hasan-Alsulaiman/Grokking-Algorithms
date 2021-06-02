@@ -32,6 +32,13 @@ public class DirectedGraph {
                 .collect(Collectors.toList()): null;
     }
 
+    public Optional<Collection<Integer>> costOf(String first, String second) {
+        return graph.get(first).stream()
+                .filter(element -> element.containsKey(second))
+                .map(Map::values)
+                .findFirst();
+    }
+
     private String cleanStr(String input){
         return input.strip().toLowerCase(Locale.ROOT);
     }
@@ -47,6 +54,6 @@ public class DirectedGraph {
         g.add("start", "b", 2);
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
-        System.out.println(g.neighboursOf("a"));
+        System.out.println(g.costOf("start", "a"));
     }
 }
