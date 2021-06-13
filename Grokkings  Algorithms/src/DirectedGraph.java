@@ -12,7 +12,7 @@ public class DirectedGraph {
 
         @Override
         public String toString() {
-            return "[ " + "-" + destination + ", " + weight + "]";
+            return "\r\n" + "(" + "-" + destination + ", " + weight + ")" ;
         }
     }
 
@@ -40,7 +40,7 @@ public class DirectedGraph {
 
     @Override
     public String toString() {
-        return "Directed Graph " + this.graphMap;
+        return "Directed Graph " + this.graphMap ;
     }
 
     public static void main(String[] args) {
