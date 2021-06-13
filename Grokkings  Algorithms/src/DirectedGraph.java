@@ -44,8 +44,10 @@ public class DirectedGraph {
 
     public List getFriends(String key){
         List result = new ArrayList();
-
-        return this.graphMap.get(key);
+        for (Edge edge : this.graphMap.get(key)) {
+            result.add(edge.getDestination());
+        }
+        return result;
     }
 
     private String cleanStr(String input){
