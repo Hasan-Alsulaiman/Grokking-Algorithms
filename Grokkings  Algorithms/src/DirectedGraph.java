@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class DirectedGraph {
     public class Edge<V> {
@@ -17,18 +16,22 @@ public class DirectedGraph {
         }
     }
 
-    ArrayList<Edge<?>> graph;
+    List<Edge> edge;
+    Map<String, List<Edge>> graphMap;
 
     public DirectedGraph() {
-        this.graph = new ArrayList<>();
+
+        this.graphMap = new HashMap<>();
     }
 
-    public void add(Edge<?> edge){
-        this.graph.add(edge);
-    }
-
-    public <V> void add(V source, V destination, int wieght){
-        this.graph.add(new Edge<>(source, destination, wieght));
+    public <V> void add(String source, V destination, int wieght){
+        if(graphMap.containsKey(source))
+            this.graphMap.get(source).add(new Edge<>(destination, wieght));
+        else {
+            edge = new ArrayList<>();
+            edge.add(new Edge<>(destination, wieght));
+            this.graphMap.put(source, edge);
+        }
     }
 
     private String cleanStr(String input){
@@ -37,7 +40,7 @@ public class DirectedGraph {
 
     @Override
     public String toString() {
-        return "Directed Graph " + this.graph;
+        return "Directed Graph " + this.graphMap;
     }
 
     public static void main(String[] args) {
