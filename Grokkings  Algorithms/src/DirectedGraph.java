@@ -2,7 +2,23 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DirectedGraph {
+    public class Edge<V> {
+        V source;
+        V destination;
+        int weight;
 
+        public Edge(V source, V destination, int weight) {
+            this.source = source;
+            this.destination = destination;
+            this.weight = weight;
+        }
+    }
+
+    ArrayList<Edge<?>> graph;
+
+    public DirectedGraph() {
+        this.graph = new ArrayList<>();
+    }
 
     private String cleanStr(String input){
         return input.strip().toLowerCase(Locale.ROOT);
