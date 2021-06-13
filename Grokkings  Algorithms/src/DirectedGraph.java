@@ -1,42 +1,53 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class DirectedGraph {
-    HashMap<String, LinkedList<Map<String, Integer>>> graph;
+    public class Edge<V> {
+        private V destination;
+        private int weight;
 
-    DirectedGraph() {
-        graph = new HashMap<>();
-    }
-
-    public void add(String first, String second, Integer cost) {
-        first = cleanStr(first);
-        second = cleanStr(second);
-        HashMap<String, Integer> map = new HashMap<>();
-        LinkedList<Map<String, Integer>> list = new LinkedList<>();
-        if(!graph.containsKey(first)){
-            map.put(second, cost);
-            list.add(map);
-            graph.put(first, list);
-        }else{
-            list = graph.get(first);
-            map.put(second, cost);
-            list.add(map);
+        public Edge(V destination, int weight) {
+            this.destination = destination;
+            this.weight = weight;
         }
 
+        public V getDestination() {
+            return destination;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + "-" + destination + ", " + weight + ")" ;
+        }
     }
 
-    public List<Set<String>> neighboursOf(String node){
-        node = cleanStr(node);
-        return (graph.containsKey(node))? graph.get(node).stream()
-                .map(map -> map.keySet())
-                .collect(Collectors.toList()): null;
+    List<Edge> edge;
+    Map<String, List<Edge>> graphMap;
+
+    public DirectedGraph() {
+
+        this.graphMap = new HashMap<>();
     }
 
-    public Optional<Collection<Integer>> costOf(String first, String second) {
-        return graph.get(first).stream()
-                .filter(element -> element.containsKey(second))
-                .map(Map::values)
-                .findFirst();
+    public <V> void add(String source, V destination, int wieght){
+        if(graphMap.containsKey(source))
+            this.graphMap.get(source).add(new Edge<>(destination, wieght));
+        else {
+            edge = new ArrayList<>();
+            edge.add(new Edge<>(destination, wieght));
+            this.graphMap.put(source, edge);
+        }
+    }
+
+    public List getFriends(String key){
+        List result = new ArrayList();
+        for (Edge edge : this.graphMap.get(key)) {
+            result.add(edge.getDestination());
+        }
+        return result;
     }
 
     private String cleanStr(String input){
@@ -45,7 +56,11 @@ public class DirectedGraph {
 
     @Override
     public String toString() {
-        return "DirectedGraph" + graph;
+        String result = "Graph:";
+        for(String key: this.graphMap.keySet()){
+            result = result + "\n" + key + "=" + this.graphMap.get(key);
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -54,6 +69,7 @@ public class DirectedGraph {
         g.add("start", "b", 2);
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
-        System.out.println(g.costOf("start", "a"));
+        System.out.println(g);
+        System.out.println(g.getFriends("start"));
     }
 }
