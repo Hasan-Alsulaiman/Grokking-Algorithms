@@ -3,19 +3,17 @@ import java.util.stream.Collectors;
 
 public class DirectedGraph {
     public class Edge<V> {
-        V source;
         V destination;
         int weight;
 
-        public Edge(V source, V destination, int weight) {
-            this.source = source;
+        public Edge(V destination, int weight) {
             this.destination = destination;
             this.weight = weight;
         }
 
         @Override
         public String toString() {
-            return "[ " + source + "-" + destination + ", " + weight + "]";
+            return "[ " + "-" + destination + ", " + weight + "]";
         }
     }
 
