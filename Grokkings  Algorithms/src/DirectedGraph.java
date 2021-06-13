@@ -12,6 +12,11 @@ public class DirectedGraph {
             this.destination = destination;
             this.weight = weight;
         }
+
+        @Override
+        public String toString() {
+            return "[ " + source + "-" + destination + ", " + weight + "]";
+        }
     }
 
     ArrayList<Edge<?>> graph;
@@ -20,7 +25,7 @@ public class DirectedGraph {
         this.graph = new ArrayList<>();
     }
 
-    public void add(Edge edge){
+    public void add(Edge<?> edge){
         this.graph.add(edge);
     }
 
@@ -34,7 +39,7 @@ public class DirectedGraph {
 
     @Override
     public String toString() {
-        return "Directed Graph " ;
+        return "Directed Graph " + this.graph;
     }
 
     public static void main(String[] args) {
@@ -43,6 +48,6 @@ public class DirectedGraph {
         g.add("start", "b", 2);
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
-        System.out.println();
+        System.out.println(g);
     }
 }
