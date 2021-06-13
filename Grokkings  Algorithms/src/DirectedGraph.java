@@ -2,12 +2,20 @@ import java.util.*;
 
 public class DirectedGraph {
     public class Edge<V> {
-        V destination;
-        int weight;
+        private V destination;
+        private int weight;
 
         public Edge(V destination, int weight) {
             this.destination = destination;
             this.weight = weight;
+        }
+
+        public V getDestination() {
+            return destination;
+        }
+
+        public int getWeight() {
+            return weight;
         }
 
         @Override
@@ -34,6 +42,12 @@ public class DirectedGraph {
         }
     }
 
+    public List getFriends(String key){
+        List result = new ArrayList();
+
+        return this.graphMap.get(key);
+    }
+
     private String cleanStr(String input){
         return input.strip().toLowerCase(Locale.ROOT);
     }
@@ -54,5 +68,6 @@ public class DirectedGraph {
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
         System.out.println(g);
+        System.out.println(g.getFriends("start"));
     }
 }
