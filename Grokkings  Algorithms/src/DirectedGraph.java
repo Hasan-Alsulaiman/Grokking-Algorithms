@@ -20,6 +20,10 @@ public class DirectedGraph {
         this.graph = new ArrayList<>();
     }
 
+    public void add(Edge edge){
+        this.graph.add(edge);
+    }
+
     private String cleanStr(String input){
         return input.strip().toLowerCase(Locale.ROOT);
     }
