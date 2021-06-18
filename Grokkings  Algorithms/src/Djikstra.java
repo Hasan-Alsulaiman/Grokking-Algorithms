@@ -17,7 +17,7 @@ public class Djikstra {
         this.processed = new ArrayList<>();
     }
 
-    private DirectedGraph.Edge getCheapest(List<DirectedGraph.Edge> nodes) {
+    public DirectedGraph.Edge getCheapest(List<DirectedGraph.Edge> nodes) {
         DirectedGraph.Edge smallest = nodes.get(0);
         for (DirectedGraph.Edge element : nodes) {
             if(element.getWeight() < smallest.getWeight()){
