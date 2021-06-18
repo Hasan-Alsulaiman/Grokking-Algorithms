@@ -78,6 +78,6 @@ public class DirectedGraph {
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
         System.out.println(g);
-        System.out.println(g.getWeight("start", "a"));
+        System.out.println(g.getWeight("start", "b"));
     }
 }
