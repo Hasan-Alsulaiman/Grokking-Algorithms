@@ -43,11 +43,7 @@ public class DirectedGraph {
     }
 
     public List getFriends(String key){
-        List result = new ArrayList();
-        for (Edge edge : this.graphMap.get(key)) {
-            result.add(edge.getDestination());
-        }
-        return result;
+        return this.graphMap.get(key);
     }
 
     public int getWeight(String first, String second) {
