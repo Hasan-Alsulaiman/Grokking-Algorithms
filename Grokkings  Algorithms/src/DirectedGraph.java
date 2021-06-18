@@ -20,7 +20,7 @@ public class DirectedGraph {
 
         @Override
         public String toString() {
-            return "(" + "-" + destination + ", " + weight + ")" ;
+            return "(" + destination + ", " + weight + ")" ;
         }
     }
 
@@ -50,6 +50,13 @@ public class DirectedGraph {
         return result;
     }
 
+    public int getWeight(String first, String second) {
+        for (Edge edge: this.graphMap.get(first)) {
+            System.out.println("test: " + edge);
+        }
+        return 0;
+    }
+
     private String cleanStr(String input){
         return input.strip().toLowerCase(Locale.ROOT);
     }
@@ -70,6 +77,6 @@ public class DirectedGraph {
         g.add("b", "a", 1);
         g.add("b", "fin", 2);
         System.out.println(g);
-        System.out.println(g.getFriends("start"));
+        System.out.println(g.getWeight("start", "a"));
     }
 }
