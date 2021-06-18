@@ -52,9 +52,10 @@ public class DirectedGraph {
 
     public int getWeight(String first, String second) {
         for (Edge edge: this.graphMap.get(first)) {
-            System.out.println("test: " + edge);
+            if(second.equals(edge.getDestination()))
+                return edge.getWeight();
         }
-        return 0;
+        return -1;
     }
 
     private String cleanStr(String input){
