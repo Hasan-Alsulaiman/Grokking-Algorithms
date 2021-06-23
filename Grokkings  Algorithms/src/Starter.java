@@ -10,8 +10,7 @@ public class Starter {
         var algo = new Djikstra(graph, "start");
         List nodes = graph.getFriends("start");
         System.out.println(graph);
-        DirectedGraph.Edge cheapest = algo.getCheapest(nodes);
-        System.out.println(algo.getCheapest(graph.getFriends(cheapest.getDestination())));
+        algo.getPath("fin");
 
     }
 }

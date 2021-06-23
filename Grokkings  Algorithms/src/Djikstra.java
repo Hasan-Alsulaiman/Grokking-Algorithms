@@ -5,8 +5,8 @@ import java.util.List;
 public class Djikstra {
     DirectedGraph graph;
     HashMap<String, Double> cost;
-    HashMap<String, String> parent;
-    ArrayList<String> processed;
+    HashMap<Object, Object> parent;
+    ArrayList<Object> processed;
     String start;
 
     public Djikstra(DirectedGraph graph, String start) {
@@ -28,9 +28,17 @@ public class Djikstra {
     }
 
     public void getPath(String end){
-        var friends = graph.getFriends(end);
-        var cheapest = getCheapest(friends);
-        this.parent.put(cheapest.getDestination());
+        Object current = start;
+
+        while(!processed.contains(current) & current != end) {
+            var friends = graph.getFriends(current);
+            var cheapest = getCheapest(friends);
+            processed.add(current);
+            parent.put(current, cheapest.getDestination());
+            current = cheapest.getDestination();
+        }
+
+        System.out.println(parent);
     }
 
 

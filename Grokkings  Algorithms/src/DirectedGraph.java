@@ -10,8 +10,8 @@ public class DirectedGraph {
             this.weight = weight;
         }
 
-        public V getDestination() {
-            return destination;
+        public String getDestination() {
+            return destination+"";
         }
 
         public int getWeight() {
