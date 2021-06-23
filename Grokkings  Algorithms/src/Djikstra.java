@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Djikstra {
     DirectedGraph graph;
-    HashMap<String, Double> cost;
+    HashMap<Object, Integer> cost;
     HashMap<Object, Object> parent;
     ArrayList<Object> processed;
     String start;
@@ -30,11 +30,12 @@ public class Djikstra {
     public void getPath(String end){
         Object current = start;
 
-        while(!processed.contains(current) & current != end) {
+        while(!processed.contains(current) & !current.equals(end)) {
             var friends = graph.getFriends(current);
             var cheapest = getCheapest(friends);
             processed.add(current);
             parent.put(current, cheapest.getDestination());
+            cost.put(cheapest, cheapest.getWeight())
             current = cheapest.getDestination();
         }
 

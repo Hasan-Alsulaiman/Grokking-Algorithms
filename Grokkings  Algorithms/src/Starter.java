@@ -7,6 +7,8 @@ public class Starter {
         graph.add("start", "b", 2);
         graph.add("b", "a", 1);
         graph.add("b", "fin", 2);
+        graph.add("a", "c", 2);
+        graph.add("c", "fin", 2);
         var algo = new Djikstra(graph, "start");
         List nodes = graph.getFriends("start");
         System.out.println(graph);
