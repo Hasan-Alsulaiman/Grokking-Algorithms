@@ -5,7 +5,7 @@ import java.util.List;
 public class Djikstra {
     DirectedGraph graph;
     HashMap<String, Double> cost;
-    HashMap<String, Double> parent;
+    HashMap<String, String> parent;
     ArrayList<String> processed;
     String start;
 
@@ -25,6 +25,12 @@ public class Djikstra {
             }
         }
         return smallest;
+    }
+
+    public void getPath(String end){
+        var friends = graph.getFriends(end);
+        var cheapest = getCheapest(friends);
+        this.parent.put(cheapest.getDestination());
     }
 
 
