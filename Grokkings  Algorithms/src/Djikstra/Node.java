@@ -15,7 +15,6 @@ public class Node {
     }
 
     public void addDestination(Node destination, int distance){
-        //add a destination node
         friends.put(destination.name, distance);
     }
 
