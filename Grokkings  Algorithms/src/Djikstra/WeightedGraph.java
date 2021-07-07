@@ -1,6 +1,7 @@
 package Djikstra;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class WeightedGraph {
     //    a graph is a set of node pairs
@@ -12,5 +13,4 @@ public class WeightedGraph {
 
     public HashSet<Node> getNodes() {
         return nodes;
-    }
-}
+}}
