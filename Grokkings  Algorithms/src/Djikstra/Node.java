@@ -7,7 +7,7 @@ import java.util.List;
 public class Node {
     private String name;
     private Integer distance = Integer.MAX_VALUE;
-    private HashMap<String, Integer> friends = new HashMap<>();
+    private HashMap<Node, Integer> friends = new HashMap<>();
     private List<Node> shortestPath = new ArrayList<>();
 
     Node(String name) {
@@ -15,7 +15,7 @@ public class Node {
     }
 
     public void addDestination(Node destination, int distance){
-        friends.put(destination.name, distance);
+        friends.put(destination, distance);
     }
 
 //    getters and setters
@@ -27,7 +27,7 @@ public class Node {
         return distance;
     }
 
-    public HashMap<String, Integer> getFriends() {
+    public HashMap<Node, Integer> getFriends() {
         return friends;
     }
 
@@ -43,7 +43,7 @@ public class Node {
         this.distance = distance;
     }
 
-    public void setFriends(HashMap<String, Integer> friends) {
+    public void setFriends(HashMap<Node, Integer> friends) {
         this.friends = friends;
     }
 

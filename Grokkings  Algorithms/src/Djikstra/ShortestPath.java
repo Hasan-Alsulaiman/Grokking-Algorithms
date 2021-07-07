@@ -1,9 +1,6 @@
 package Djikstra;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ShortestPath {
     private WeightedGraph graph;
@@ -25,7 +22,12 @@ public class ShortestPath {
     }
 
     private void calculateMinimumDistance(Node evaluationNode, Integer edgeWeight, Node sourceNode) {
-
+        if(sourceNode.getDistance() + edgeWeight < evaluationNode.getDistance()){
+            evaluationNode.setDistance(sourceNode.getDistance() + edgeWeight);
+            ArrayList<Node> shortestPath = new ArrayList<>(sourceNode.getShortestPath());
+            shortestPath.add(sourceNode);
+            evaluationNode.setShortestPath(shortestPath);
+        }
     }
 
     public WeightedGraph getShortestPath(Node source){
@@ -36,7 +38,7 @@ public class ShortestPath {
         while (unSettled.size() != 0) {
             Node current = getLowestDistanceNode(unSettled);
             unSettled.remove(current);
-            for (Map.Entry<String, Integer> friends : current.getFriends().entrySet()) {
+            for (Map.Entry<String, Integer> friends: current.getFriends().entrySet()) {
 
             }
         }
