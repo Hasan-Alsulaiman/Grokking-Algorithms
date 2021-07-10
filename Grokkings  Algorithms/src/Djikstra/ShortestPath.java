@@ -38,10 +38,16 @@ public class ShortestPath {
         while (unSettled.size() != 0) {
             Node current = getLowestDistanceNode(unSettled);
             unSettled.remove(current);
-            for (Map.Entry<String, Integer> friends: current.getFriends().entrySet()) {
-
+            for (Map.Entry<Node, Integer> friends: current.getFriends().entrySet()) {
+                Node aFriend = friends.getKey();
+                int distance = friends.getValue();
+                if( !unSettled.contains(aFriend) ){
+                    calculateMinimumDistance(aFriend, distance, current);
+                    unSettled.add(aFriend);
+                }
+                settled.add(current);
             }
         }
-        return null;
+        return graph;
     }
 }

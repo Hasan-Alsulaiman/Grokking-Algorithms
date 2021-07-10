@@ -13,4 +13,14 @@ public class WeightedGraph {
 
     public HashSet<Node> getNodes() {
         return nodes;
-}}
+    }
+
+    @Override
+    public String toString() {
+        var result = new StringBuilder();
+        for(Node node: nodes){
+            result.append(node.getName() + " - ");
+        }
+        return result.toString();
+    }
+}

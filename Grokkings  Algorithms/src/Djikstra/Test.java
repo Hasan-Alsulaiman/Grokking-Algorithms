@@ -29,6 +29,10 @@ public class Test {
         graph.addNode(nodeD);
         graph.addNode(nodeE);
         graph.addNode(nodeF);
+
+        var djikstra = new ShortestPath(graph);
+        WeightedGraph result = djikstra.getShortestPath(nodeA);
+        System.out.println(result);
     }
 
 }
